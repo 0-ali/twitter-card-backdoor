@@ -65,13 +65,13 @@ Click **Request Approval** to begin the approval process. You will be required t
 ----------
 
 
-#### Step 5: Share it on twitter:
+#### Step 5: Share it on twitter
 When the embedded video is played you might received the viewer(s) IP (I suggest to use a request logger) .
 
 ![F156990](https://cdn.rawgit.com/xc0d3rz/Abstract-jekyll/c690ee51/img/Screenshot_at_2017-02-02_23_52_28.png)
 
 
-### PoC Video
+## Proof of Concept
 
 I made a video as a proof of concept, testing the vulnerability on a Virtual Machine running on WINXP SP2 (**Computer B**).
 The source code can be found at [poc.html](./poc.html)
