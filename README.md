@@ -2,7 +2,7 @@
 
 ## Summary
 
-Twitter allows the embedding of videos in a tweet via [Player Cards](https://dev.twitter.com/docs/cards/types/player-card). The problem is in the playing method of the video, currently, it uses a sandbox (`iframe`)  to play the embedded video(s) even when this might be protected against [Cross-site scripting (XSS)](https://en.wikipedia.org/wiki/Cross-site_scripting), still being unsafe because it doesn't protect **HTTP Request Sender**  information such as **IP Address, User-Agent and the referer**.
+Twitter allows the embedding of videos in a tweet via [Player Cards](https://dev.twitter.com/docs/cards/types/player-card). The problem is in the playing method of the video: currently, it uses a sandbox (`iframe`)  to play the embedded video(s) even when this might be protected against [Cross-site scripting (XSS)](https://en.wikipedia.org/wiki/Cross-site_scripting), still being unsafe because it doesn't protect **HTTP Request Sender**  information such as the **IP Address, User-Agent, and the referer**.
 > A lot of Twitter users used to use a VPN to keep these safe from Twitter himself, will they agreed to share them with 3rd-part and this 3rd-part could be anyone
 
 The attacker can embed a link to a request logger or can listen to connections in order to get the IP address of the video viewer.   
@@ -46,7 +46,7 @@ Here is a example with a listener in 192.168.1.1:2020:
 
 
 #### Step 3: Validate your card using the Twitter Validator Tool:
-Once you have added the meta tags and published your page, copy and paste the page URL into the [Twitter Card Validator](https://cards-dev.twitter.com/validator) and then click **Preview Card**.
+Once you have added the meta tags and published the page, copy and paste the URL into the [Twitter Card Validator](https://cards-dev.twitter.com/validator) and then click **Preview Card**.
 
 ![F156985](https://cdn.rawgit.com/xc0d3rz/Abstract-jekyll/c690ee51/img/Screenshot_at_2017-02-02_23_41_50.png)
 
