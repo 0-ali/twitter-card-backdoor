@@ -1,11 +1,11 @@
-# Watching a video on Twitter maybe put your PC or phone in a risk
+# Twitter Card Backdoor
 
 ## Summary
 
-Twitter allows embedding of videos in a tweet via [Twitter Player Cards](https://dev.twitter.com/docs/cards/types/player-card), The case is in playing method of the embedded video, The current playing method is by use a sandbox `iframe`  to play the embedded video(s) even this might protected against [Cross-site scripting (XSS)](https://en.wikipedia.org/wiki/Cross-site_scripting) but still unsafe because it doesn't protected **HTTP Request Sender**  information such as **IP Address, User-Agent ,referer**.
+Twitter allows the embedding of videos in a tweet via [Player Cards](https://dev.twitter.com/docs/cards/types/player-card). The problem is in the playing method of the video, currently, it uses a sandbox (`iframe`)  to play the embedded video(s) even when this might be protected against [Cross-site scripting (XSS)](https://en.wikipedia.org/wiki/Cross-site_scripting), still being unsafe because it doesn't protect **HTTP Request Sender**  information such as **IP Address, User-Agent and the referer**.
 > A lot of Twitter users used to use a VPN to keep these safe from Twitter himself, will they agreed to share them with 3rd-part and this 3rd-part could be anyone
 
-The attacker can embedding a link for request logger or can listen to connections in order to get the IP address of the video viewer.   
+The attacker can embed a link to a request logger or can listen to connections in order to get the IP address of the video viewer.   
 
 ## Replication Steps
 
@@ -23,7 +23,7 @@ You need to add some Twitter specific meta tags to your page to enable Twitter P
 |twitter:player:height|Height of IFRAME specified in twitter:player in pixels|
 |twitter:image|Image to be displayed in place of the player on platforms that don’t support iframes or inline players; you should make this image the same dimensions as your player|
 
-Here are some sample with a listener in 192.168.1.1:2020:
+Here is a example with a listener in 192.168.1.1:2020:
 
 ```html
 <meta name="twitter:card" content="player" />
@@ -39,13 +39,13 @@ Here are some sample with a listener in 192.168.1.1:2020:
 ----------
 
 
-#### Step 2:  Host the your page
+#### Step 2:  Launch your page
 
 
 ----------
 
 
-#### Step 3: Validating your URL using the Twitter validator tool:
+#### Step 3: Validate your card using the Twitter Validator Tool:
 Once you have added the meta tags and published your page, copy and paste the page URL into the [Twitter Card Validator](https://cards-dev.twitter.com/validator) and then click **Preview Card**.
 
 ![F156985](https://cdn.rawgit.com/xc0d3rz/Abstract-jekyll/c690ee51/img/Screenshot_at_2017-02-02_23_41_50.png)
@@ -66,14 +66,14 @@ Click **Request Approval** to begin the approval process. You will be required t
 
 
 #### Step 5: Share it on twitter:
-When the embedded video is begin played you might received the viewer(s) IP (I suggest to use request logger) .
+When the embedded video is played you might received the viewer(s) IP (I suggest to use a request logger) .
 
 ![F156990](https://cdn.rawgit.com/xc0d3rz/Abstract-jekyll/c690ee51/img/Screenshot_at_2017-02-02_23_52_28.png)
 
 
 ### PoC Video
 
-I've take a video for PoC, Testing the vulnerability on a Virtual Machine running on WINXP SP2.(**Computer B**)
+I made a video as a proof of concept, testing the vulnerability on a Virtual Machine running on WINXP SP2.(**Computer B**)
 The source code of tw.html page:
 
 ```html
@@ -93,6 +93,6 @@ The source code of tw.html page:
 </head>
 </html>
 ```
-I've hosted the page on a server then share the URL on Twitter then I Copied the status URL and played the embedded video from the Virtual Machine, I've the IIP address of **Computer B** by listening to any connections in the port **2020**  from **Computer A** then I attacked the **Computer B** with `ms08_067_netapi` exploit and I've gain access to the **Computer A**
+I've hosted the page on a server, shared it on twitter and then played the embedded video in the the Virtual Machine. Eventually I got **B's ip address.** by listening to in the port **2020**  coming from **Computer A** to then attack **Computer B** with metasploit's `ms08_067_netapi` exploit gaining access to **Computer A**.
 
 https://www.youtube.com/embed/0occxD9v11M
